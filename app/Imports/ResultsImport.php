@@ -13,11 +13,18 @@ class ResultsImport implements ToModel
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
+    private $rs_barcode;
+
+    public function __construct(int $Rs_Barcode)
+    {
+        $this->rs_barcode = $Rs_Barcode;
+    }
+
     public function model(array $row)
     {
         DB::unprepared('SET IDENTITY_INSERT T_Examiners ON');
         $results = Results::create([
-            "Rs_Barcode" => $row[0],
+            "Rs_Barcode" => $this->rs_barcode,
             "Rs_Exam_ID" => $row[1],
             "Rs_Saving_Date" => $row[2],
             "Rs_Exam_Name" => $row[3],
