@@ -68,7 +68,7 @@ class CoreController extends Controller
     {
         ini_set('max_execution_time', 1200);
         //insert for this excel for who has the even barcode
-        Excel::import(new PracticalImport, $request->excel_file);{}
+        Excel::import(new PracticalImport, $request->excel_file);
         
         session()->flash("success", 'Practical results inserted');
         return redirect()->route('index');
