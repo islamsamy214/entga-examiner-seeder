@@ -20,6 +20,7 @@ Route::get('/', [CoreController::class, 'index'])->name('index');
 Route::post('/insert-examiners',[CoreController::class, 'insertExaminerFromExcel'])->name('insert-examiners');
 Route::post('/insert-answers',[CoreController::class, 'insertAnswersFromExcel'])->name('insert-answers');
 Route::post('/insert-results',[CoreController::class, 'insertResultsFromExcel'])->name('insert-results');
+Route::post('/insert-practical',[CoreController::class, 'insertPracticalFromExcel'])->name('insert-practical');
 
 //get excel sheet
 Route::get('/get-examiner',[CoreController::class, 'getExaminerExcel'])->name('get-examiner');

@@ -11,7 +11,11 @@ use App\Http\Requests\ExaminerRequest;
 use App\Http\Requests\ExcelRequest;
 use App\Imports\AnswersImport;
 use App\Imports\ResultsImport;
+use App\Imports\PracticalImport;
 use App\Models\Examiner;
+use Illuminate\Support\Facades\DB;
+use App\Models\Practical;
+
 
 class CoreController extends Controller
 {
@@ -57,6 +61,16 @@ class CoreController extends Controller
         }
 
         session()->flash("success", 'Results inserted');
+        return redirect()->route('index');
+    }
+
+    public function insertPracticalFromExcel(ExcelRequest $request)
+    {
+        ini_set('max_execution_time', 1200);
+        //insert for this excel for who has the even barcode
+        Excel::import(new PracticalImport, $request->excel_file);{}
+        
+        session()->flash("success", 'Practical results inserted');
         return redirect()->route('index');
     }
 
